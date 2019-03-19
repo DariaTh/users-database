@@ -1,6 +1,0 @@
-[2019-03-19 13:06:56] name.DEBUG: I am debug [] []
-[2019-03-19 13:06:56] name.ERROR: I am error {"productId":123} []
-[2019-03-19 13:21:34] name.DEBUG: I am debug [] []
-[2019-03-19 19:41:04] name.DEBUG: I am debug [] []
-[2019-03-19 19:41:04] name.INFO: Adding a new user {"name":"Seldaek"} []
-[2019-03-19 19:41:04] name.INFO: Will have {name} for {country} {"name":null,"country":null} []

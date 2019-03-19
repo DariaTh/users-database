@@ -1,11 +1,9 @@
 <?php
 class User{
- 
-    // database connection and table name
+
     private $conn;
     private $table_name = "users";
  
-    // object properties
     public $id;
     public $name;
     public $email;
@@ -15,10 +13,8 @@ class User{
         $this->conn = $db;
     }
  
-    // create product
     function create(){
  
-        //write query
         $query = "INSERT INTO
                     " . $this->table_name . "
                 SET
@@ -26,15 +22,10 @@ class User{
  
         $stmt = $this->conn->prepare($query);
  
-        // posted values
         $this->name=htmlspecialchars(strip_tags($this->name));
         $this->email=htmlspecialchars(strip_tags($this->email));
         $this->country_id=htmlspecialchars(strip_tags($this->country_id));
  
-        // to get time-stamp for 'created' field
-       // $this->timestamp = date('Y-m-d H:i:s');
- 
-        // bind values 
         $stmt->bindParam(":name", $this->name);
         $stmt->bindParam(":email", $this->email);
         $stmt->bindParam(":country_id", $this->country_id);
@@ -63,7 +54,7 @@ class User{
      
         return $stmt;
     }
-    // used for paging products
+ 
     public function countAll(){
  
         $query = "SELECT id FROM " . $this->table_name . "";
@@ -75,6 +66,7 @@ class User{
     
         return $num;
     }
+
     function readOne(){
  
         $query = "SELECT
@@ -110,19 +102,16 @@ class User{
      
         $stmt = $this->conn->prepare($query);
      
-        // posted values
         $this->name=htmlspecialchars(strip_tags($this->name));
         $this->email=htmlspecialchars(strip_tags($this->email));
         $this->country_id=htmlspecialchars(strip_tags($this->country_id));
         $this->id=htmlspecialchars(strip_tags($this->id));
      
-        // bind parameters
         $stmt->bindParam(':name', $this->name);
         $stmt->bindParam(':email', $this->email);
         $stmt->bindParam(':country_id', $this->country_id);
         $stmt->bindParam(':id', $this->id);
      
-        // execute the query
         if($stmt->execute()){
             return true;
         }
@@ -131,7 +120,6 @@ class User{
          
     }
 
-        // delete the product
     function delete(){
     
         $query = "DELETE FROM " . $this->table_name . " WHERE id = ?";

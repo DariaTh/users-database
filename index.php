@@ -1,38 +1,32 @@
 <?php
-// page given in URL parameter, default page is one
+
 $page = isset($_GET['page']) ? $_GET['page'] : 1;
- 
-// set number of records per page
+
 $records_per_page = 5;
- 
-// calculate for the query LIMIT clause
+
 $from_record_num = ($records_per_page * $page) - $records_per_page;
- 
-// include database and object files
+
 include_once 'config/database.php';
 include_once 'objects/user.php';
 include_once 'objects/country.php';
 include_once 'monolog.php';
  
-// instantiate database and objects
 $database = new Database();
 $db = $database->getConnection();
  
 $user = new User($db);
 $country = new Country($db);
- 
-// query products
+
 $stmt = $user->readAll($from_record_num, $records_per_page);
 $num = $stmt->rowCount();
 
 $page_title = "Read Users";
 include_once "header.php";
  
-echo "<div class='right-button-margin'>";
+echo "<div class='right-button'>";
     echo "<a href='create_user.php' class='btn btn-default pull-right'>Create User</a>";
 echo "</div>";
 
-// display the products if there are any
 if($num>0){
  
     echo "<table class='table table-hover table-responsive table-bordered'>";
@@ -57,7 +51,7 @@ if($num>0){
                 echo "</td>";
  
                 echo "<td>";
-                    // read, edit and delete buttons
+                  
                     echo "<a href='read_one.php?id={$id}' class='btn btn-primary left-margin'>
                     <span class='glyphicon glyphicon-list'></span> Read
                     </a>
@@ -77,23 +71,17 @@ if($num>0){
  
     echo "</table>";
  
-    // paging buttons will be here
 }
  
-// tell the user there are no products
 else{
     echo "<div class='alert alert-info'>No users found.</div>";
 }
 
-// the page where this paging is used
 $page_url = "index.php?";
  
-// count all products in the database to calculate total pages
 $total_rows = $user->countAll();
  
-// paging buttons here
 include_once 'paging.php';
  
-// set page footer
 include_once "footer.php";
 ?>

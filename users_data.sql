@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Хост: 127.0.0.1:3306
--- Время создания: Мар 19 2019 г., 01:26
+-- Время создания: Мар 20 2019 г., 01:47
 -- Версия сервера: 10.3.13-MariaDB
 -- Версия PHP: 7.1.22
 
@@ -39,7 +39,9 @@ CREATE TABLE `countries` (
 
 INSERT INTO `countries` (`id`, `country`) VALUES
 (1, 'Ukraine'),
-(4, 'USA');
+(4, 'USA'),
+(6, 'Italy'),
+(7, 'Nigeria');
 
 -- --------------------------------------------------------
 
@@ -59,7 +61,14 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `name`, `email`, `country_id`) VALUES
-(1, 'Alex edited', 'alex2@alex.com', 4);
+(1, 'Brie Larson', 'brie@larson.com', 4),
+(3, 'Ivo Bobul', 'ivo@bob.com', 1),
+(4, 'Roberto Benigni', 'roberto @mail.com', 6),
+(5, 'Oleg Vynnyk', 'alega@mail.com', 1),
+(6, 'Will Smith', 'will@smi.com', 7),
+(7, 'Sophia Loren', 'sophia@mail.com', 6),
+(8, 'Snoop Dogg', 'snoop@mail.com', 7),
+(9, 'Kanye West', 'kanye@mail.com', 7);
 
 --
 -- Индексы сохранённых таблиц
@@ -85,13 +94,13 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT для таблицы `countries`
 --
 ALTER TABLE `countries`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT для таблицы `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
